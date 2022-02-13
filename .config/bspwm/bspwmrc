@@ -1,0 +1,24 @@
+#! /bin/sh
+
+# External tools
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x polybar > /dev/null || polybar -r top &
+pgrep -x picom > /dev/null || picom -b
+nitrogen --restore
+
+# Trackpad
+xinput set-prop 11 350 1 # Tapping
+xinput set-prop 11 358 1 # Natrual scrolling
+xinput set-button-map 11 1 0 # Disable middle mouse button on tackpad
+
+# bspwm
+bspc monitor -d terminal web code music mail
+
+bspc config border_width         3
+bspc config window_gap           15
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc config external_rules_command "/home/tobias/.config/bspwm/external_rules.sh"
