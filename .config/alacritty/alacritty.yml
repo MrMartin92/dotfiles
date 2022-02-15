@@ -1,0 +1,7 @@
+font:
+  normal:
+    family: terminus
+  size: 6
+
+window:
+  opacity: 0.9
